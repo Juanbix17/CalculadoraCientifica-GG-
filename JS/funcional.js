@@ -57,7 +57,13 @@ let m = {
 
             case "igual":
                 try {
-                    p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
+                    let resultado = eval(p.operaciones.innerHTML);
+
+                    if(resultado == Infinity || resultado == -Infinity){
+                        p.operaciones.innerHTML = "Syntax Error";
+                    }else{
+                        p.operaciones.innerHTML = resultado;
+                    }
                 } catch(e) {
                     p.operaciones.innerHTML = "Error";
                 }
