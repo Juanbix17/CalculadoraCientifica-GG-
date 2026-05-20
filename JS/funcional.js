@@ -75,3 +75,38 @@ let m = {
     }
 }
 m.inicio();
+document.addEventListener("keydown", function(tecla){
+
+    let teclaPresionada = tecla.key;
+
+    if(!isNaN(teclaPresionada)){
+        p.accion = "numero";
+        p.digito = teclaPresionada;
+        m.calculadora();
+    }
+
+    if(teclaPresionada == "+" || teclaPresionada == "-" || teclaPresionada == "*" || teclaPresionada == "/"){
+        p.accion = "simbolo";
+        p.digito = teclaPresionada;
+        m.calculadora();
+    }
+
+    if(teclaPresionada == "."){
+        p.accion = "decimal";
+        p.digito = teclaPresionada;
+        m.calculadora();
+    }
+
+    if(teclaPresionada == "Enter"){
+        p.accion = "igual";
+        p.digito = "=";
+        m.calculadora();
+    }
+
+    if(teclaPresionada == "Backspace"){
+        p.accion = "borrar";
+        p.digito = "C";
+        m.calculadora();
+    }
+
+});
