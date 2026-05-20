@@ -88,6 +88,17 @@ let m = {
                 p.resultado = true;
 
             break;
+
+            case "potencia":
+
+                let numeroPotencia = parseFloat(p.operaciones.innerHTML);
+
+                p.operaciones.innerHTML = Math.pow(numeroPotencia, 2);
+
+                p.resultado = true;
+
+            break;
+            
             case "igual":
                 try {
                     let resultado = eval(p.operaciones.innerHTML);
