@@ -1,25 +1,22 @@
-// crear las propiedades del objeto
-
 let p = {
-    teclas:document.querySelectorAll("#calculadora ul li"),
+    teclas: document.querySelectorAll("#calculadora ul li"),
     accion: null,
     digito: null,
     operaciones: document.querySelector("#operaciones"),
     cantisignos: 0,
     cantdecimal: false,
-    resultado: 0,
+    resultado: false
 }
-// crear los metodos
 
 let m = {
-    inicio:function()
+    inicio: function()
     {
         for(let i = 0; i < p.teclas.length; i++)
         {
             p.teclas[i].addEventListener("click", m.oprimirtecla);
         }
     },
-    oprimirtecla:function(tecla)
+    oprimirtecla: function(tecla)
     {
         p.accion = tecla.target.getAttribute("class");
         p.digito = tecla.target.innerHTML;
@@ -27,19 +24,52 @@ let m = {
     },
     calculadora: function()
     {
-        switch(accion)
+        switch(p.accion)
         {
             case "numero":
-                console.log("numero");
+                p.cantisignos = 0;
+                if (p.operaciones.innerHTML == "0" || p.resultado) {
+                    p.operaciones.innerHTML = p.digito;
+                    p.resultado = false;
+                } else {
+                    p.operaciones.innerHTML += p.digito;
+                }
             break;
-            case "signo":
-                console.log("signo");
+
+            case "simbolo":
+                p.cantisignos++;
+                if (p.cantisignos == 1) {
+                    if (p.operaciones.innerHTML != "0") {
+                        p.operaciones.innerHTML += p.digito;
+                        p.cantdecimal = false;
+                        p.resultado = false;
+                    }
+                }
             break;
+
             case "decimal":
-                console.log("decimal");
+                if (!p.cantdecimal && p.cantisignos == 0) {
+                    p.operaciones.innerHTML += p.digito;
+                    p.cantdecimal = true;
+                    p.resultado = false;
+                }
             break;
+
             case "igual":
-                console.log("igual");
+                try {
+                    p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
+                } catch(e) {
+                    p.operaciones.innerHTML = "Error";
+                }
+                p.resultado = true;
+                p.cantdecimal = false;
+            break;
+            case "borrar":
+                p.operaciones.innerHTML = p.operaciones.innerHTML.slice(0, -1);
+
+                if (p.operaciones.innerHTML == "") {
+                    p.operaciones.innerHTML = "0";
+                }
             break;
         }
     }
