@@ -37,7 +37,7 @@ center h1 {
 }
 
 #operaciones {
-    background: #3e5cc0;
+    background: #7589ca;
     color: #ff0000;
     font-size: 2.5rem;
     text-align: right;
@@ -84,10 +84,23 @@ center h1 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .igual{
-    background: #ff3b3b !important;
-    grid-column: span 2 !important;
+    background: #0d8113 !important;
 }
 .borrar{
-    background: #ff3b3b !important;
-    grid-column: span 2 !important;
+    background: #a30101 !important;
+}
+.simbolo{
+    background: #3b5252 !important;
+}
+.raiz{
+    background: #3b5252 !important;
+}
+.decimal{
+    background: #3b5252 !important;
+}
+.coseno{
+    background: #3b5252 !important;
+}
+.seno{
+    background: #3b5252 !important;
 }

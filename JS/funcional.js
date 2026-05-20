@@ -55,6 +55,39 @@ let m = {
                 }
             break;
 
+            case "raiz":
+
+                let numero = parseFloat(p.operaciones.innerHTML);
+
+                if(numero < 0){
+                    p.operaciones.innerHTML = "Error";
+                }else{
+                    p.operaciones.innerHTML = Math.sqrt(numero);
+                }
+
+                p.resultado = true;
+
+            break;
+
+            case "seno":
+
+                let numeroSeno = parseFloat(p.operaciones.innerHTML);
+
+                p.operaciones.innerHTML = Math.sin(numeroSeno * Math.PI / 180);
+
+                p.resultado = true;
+
+            break;
+
+            case "coseno":
+
+                let numeroCoseno = parseFloat(p.operaciones.innerHTML);
+
+                p.operaciones.innerHTML = Math.cos(numeroCoseno * Math.PI / 180);
+
+                p.resultado = true;
+
+            break;
             case "igual":
                 try {
                     let resultado = eval(p.operaciones.innerHTML);
